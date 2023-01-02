@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhà máy 1-2</title>
+    <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/factory1-2.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container">
+        <a href="/index.html">
+          <img src="/dpaklogo.png" alt="" />
+        </a>
+        <p>Nhà Máy 1-2</p>
+        <nav>
+          <ul class="navbar-menu">
+            <li><a href="/index.html">Trang Chủ</a></li>
+            <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
+            <li><a href="/material.html">Kho Nguyên Liệu</a></li>
+            <li><a href="/goods.html">Khu Thành Phẩm</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="main-access">
+      <div class="container">
+        <img class="distinct" src="/image/factory1-2.jpg" alt="" />
+        <input
+          class="W21"
+          onclick="openForm()"
+          type="radio"
+          name="W21"
+          id="W21"
+          value="2"
+        />
+        <label class="W21-label" for="W21">W21</label>
+        <input
+          class="W22"
+          onclick="openForm()"
+          type="radio"
+          name="W21"
+          id="W22"
+          value="3"
+        />
+        <label class="W22-label" for="W22">W22</label>
+      </div>
+    </div>
+    <div class="form-popup" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <h1>Chọn điểm đến</h1>
+        <img
+          onclick="closeForm()"
+          class="menu-exit"
+          src="/image/exit.png"
+          alt=""
+        />
+        <input type="radio" id="age1" name="age" value="1" />
+        <label for="age1">Kho Thông Minh</label>
+        <input type="radio" id="age2" name="age" value="2" />
+        <label for="age2">Khu Chiên</label>
+        <input type="radio" id="age3" name="age" value="3" />
+        <label for="age3">Khu Sấy</label>
+        <input type="radio" id="age4" name="age" value="4" />
+        <label for="age4">Làm Kẹo</label>
+        <div class="confirm">
+          <button type="button" class="btn cancel" onclick="closeForm()">
+            Xác Nhận
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <img class="foot-img" src="/image/Logo-01.svg" alt="" />
+      </div>
+    </div>
+    <script>
+      function openForm() {
+        // document.getElementById("main-access").style.zIndex = "-999";
+        //document.getElementById("myForm").style.zIndex = "1";
+        document.getElementById("myForm").style.display = "block";
+        document.getElementById("myForm").style.opacity = "1";
+      }
+
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+        //document.getElementById("myForm").style.zIndex = "-999";
+        document.getElementById("myForm").style.opacity = "0";
+        // document.getElementById("main-access").style.zIndex = "1";
+      }
+    </script>
+  </body>
+</html>
