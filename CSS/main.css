@@ -99,6 +99,9 @@ body {
     transition: all 0.3s ease;
     display: none;
   }
+  .navbar .container p {
+    font-size: 4.5vw;
+  }
   .Mobile-menu {
     display: block;
     background-color: rgb(145, 138, 138);

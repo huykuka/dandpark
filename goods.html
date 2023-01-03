@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Khu Thành Phẩm</title>
     <link rel="stylesheet" href="/CSS/main.css" />
+    <link rel="stylesheet" href="/CSS/goods.css" />
   </head>
   <body>
     <div class="navbar">
@@ -24,23 +25,104 @@
         </nav>
       </div>
     </div>
-    <!-- <div class="main-image">
-        <div class="container">
-          <img src="/image/solution-by-application.png" alt="">
-        </div>
-      </div> -->
-    <!-- <div class="Mobile-menu">
-        <div class="container">
-          <ul class="navbar-menu">
-            <li><a href="">Nhà máy 1-2<img src="/image/factory.png" alt=""> </a></li>
-            <li><a href="">Kho Nguyên Liệu<img src="/image/maeterial.jpg" alt=""></a></li>
-            <li><a href="">Khu Thành Phẩm<img src="/image/finishedgood.png" alt=""></a></li>
-        </div>
-      </div> -->
+    <div class="inputdata">
+      <div class="Pickup">
+        <label class="rackid" for="fname">RACK:</label>
+        <input type="text" id="fname" name="fname" />
+      </div>
+      <div class="Drop">
+        <input type="radio" id="age1" name="age" value="1" />
+        <label for="age1">Kho Thông Minh</label>
+        <input type="radio" id="age2" name="age" value="2" />
+        <label for="age2">Nhà Máy 1</label>
+        <input type="radio" id="age3" name="age" value="3" />
+        <label for="age3">Khu Nguyên Liệu</label>
+        <!-- <input type="radio" id="age5" name="age" value="5" />
+      <label for="age5">Máy Chiên 6</label><br />   -->
+      </div>
+    </div>
+    <div class="Confirm">
+      <button class="Button12" id="callAGV" type="Confirm">Xác Nhận</button>
+    </div>
+    <!-- <div class="Void">Void</div> -->
     <div class="footer">
       <div class="container">
         <img class="foot-img" src="/image/Logo-01.svg" alt="" />
       </div>
     </div>
+    <script>
+      const agvcall = document.getElementById("callAGV");
+      let agvjson = {
+        reqCode: "",
+        taskTyp: "DDPA",
+        positionCodePath: [
+          {
+            //Departure
+            positionCode: "124",
+            type: "03",
+          },
+          {
+            //Destination
+            positionCode: "10",
+            type: "04",
+          },
+        ],
+        podCode: "100001",
+      };
+      function pickupselect() {
+        if (document.getElementById("fname").value !== "") {
+          agvjson.positionCodePath[0].positionCode =
+            document.getElementById("fname").value;
+        } else {
+          alert("Please Scan Rack!");
+          return;
+        }
+      }
+      function dropselect() {
+        if (document.getElementById("age1").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "44";
+        } else if (document.getElementById("age2").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "234";
+        } else if (document.getElementById("age3").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "124";
+        } else if (document.getElementById("age4").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "66";
+        } else if (document.getElementById("age5").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "77";
+        } else {
+          alert("Please Select the Destination!");
+          return;
+        }
+        sendRCS();
+      }
+      async function sendRCS() {
+        const endpoint = new URL(
+          "http://192.168.20.2:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
+        );
+        const response = await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "*",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify(agvjson),
+        });
+        if (response.status === 404) {
+          alert("Error");
+          return;
+        } else {
+          alert("Call Successfully");
+        }
+        console.log(response);
+      }
+      agvcall.addEventListener("click", function () {
+        console.log(document.getElementById("fname").value);
+        pickupselect();
+        dropselect();
+        console.log(JSON.stringify(agvjson));
+      });
+    </script>
   </body>
 </html>
