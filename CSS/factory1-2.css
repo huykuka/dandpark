@@ -97,14 +97,15 @@
 }
 
 .form-popup {
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
   border-radius: 2rem;
-  z-index: 9;
-  transition: 0.5s;
+  z-index: 0;
+  transition: 1s;
   opacity: 0;
   background-color: white;
 }
@@ -124,12 +125,12 @@
   border: 2px solid;
   border-radius: 1em;
   display: flex;
-  padding: AUTO;
-  margin: 0.75em 0.75em;
+  margin: 0.75em 2em;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
+  padding: 0.75em 0.75em;
 }
 .form-popup label:before {
   /* position: absolute;

@@ -27,8 +27,8 @@
     </div>
     <div class="inputdata">
       <div class="Pickup">
-        <label class="rackid" for="fname">RACK:</label>
-        <input type="text" id="fname" name="fname" />
+        <!-- <label class="rackid" for="fname">RACK:</label> -->
+        <input type="text" id="fname" name="fname" placeholder="Scan mã RACK!"/>
       </div>
       <div class="Drop">
         <input type="radio" id="age1" name="age" value="1" />
@@ -83,11 +83,13 @@
         
       };
       function pickupselect() {
-        if (document.getElementById("fname").value !== "") {
-          agvjson.positionCodePath[0].positionCode= document.getElementById("fname").value;
-        } else {
+        if (!document.getElementById("fname").value)
+        {
           alert("Please Scan Rack!");
           return;
+          
+        }else{
+          agvjson.positionCodePath[0].positionCode= document.getElementById("fname").value;
         }
       }
       function dropselect() {

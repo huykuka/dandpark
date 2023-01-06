@@ -38,6 +38,7 @@ body {
       display: flex;
       white-space: nowrap;
       li {
+        font-size: 1.5vw;
         font-weight: bold;
         margin-left: 0em;
         margin-right: 0.5em;
@@ -74,7 +75,7 @@ body {
     right: 0;
   }
 }
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 900px) {
   body {
     background: rgb(255, 255, 255);
     margin: 0;
