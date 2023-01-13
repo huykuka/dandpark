@@ -35,8 +35,8 @@
         <label for="age1">Kho Thông Minh</label>
         <input type="radio" id="age2" name="age" value="2" />
         <label for="age2">Nhà Máy 1</label>
-        <input type="radio" id="age3" name="age" value="3" />
-        <label for="age3">Khu Nguyên Liệu</label>
+        <!-- <input type="radio" id="age3" name="age" value="3" />
+        <label for="age3">Khu Nguyên Liệu</label> -->
         <!-- <input type="radio" id="age5" name="age" value="5" />
       <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
@@ -67,7 +67,6 @@
             type: "04",
           },
         ],
-        podCode: "100001",
       };
       function pickupselect() {
         if (document.getElementById("fname").value !== "") {
@@ -81,8 +80,11 @@
       function dropselect() {
         if (document.getElementById("age1").checked == true) {
           agvjson.positionCodePath[1].positionCode = "44";
+          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age2").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "234";
+          agvjson.positionCodePath[1].positionCode = "2";
+          agvjson.positionCodePath[1].type = "02";
+
         } else if (document.getElementById("age3").checked == true) {
           agvjson.positionCodePath[1].positionCode = "124";
         } else if (document.getElementById("age4").checked == true) {

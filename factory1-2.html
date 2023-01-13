@@ -27,25 +27,31 @@
     </div>
     <div class="main-access">
       <div class="container">
-        <img class="distinct" src="/image/factory1-2.jpg" alt="" />
-        <input
-          class="W21"
-          onclick="openForm()"
-          type="radio"
-          name="W21"
-          id="W21"
-          value="2"
-        />
-        <label class="W21-label" for="W21">W21</label>
-        <input
-          class="W22"
-          onclick="openForm()"
-          type="radio"
-          name="W21"
-          id="W22"
-          value="3"
-        />
-        <label class="W22-label" for="W22">W22</label>
+        <!-- <img class="distinct" src="/image/factory1-2.jpg" alt="" /> -->
+        <ul>
+          <li>
+            <input
+              class="W21"
+              onclick="openForm()"
+              type="radio"
+              name="W21"
+              id="W21"
+              value="2"
+            />
+            <label class="W21-label" for="W21">W21</label>
+          </li>
+          <li>
+            <input
+              class="W22"
+              onclick="openForm()"
+              type="radio"
+              name="W21"
+              id="W22"
+              value="3"
+            />
+            <label class="W22-label" for="W22">W22</label>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="form-popup" id="myForm">
@@ -79,9 +85,9 @@
     </div>
     <script>
       function openForm() {
-      // document.getElementById("main-access").style.zIndex = "-999";
-      //  document.getElementById("myForm").style.zIndex = "1";
-       // document.getElementById("myForm").style.visibility = "visible";
+        // document.getElementById("main-access").style.zIndex = "-999";
+        //  document.getElementById("myForm").style.zIndex = "1";
+        // document.getElementById("myForm").style.visibility = "visible";
         document.getElementById("myForm").style.display = "block";
         document.getElementById("myForm").style.opacity = "1";
         document.getElementById("main-access").style.zIndex = "-1";
@@ -95,76 +101,71 @@
         document.getElementById("main-access").style.zIndex = "1";
       }
       const agvcall = document.getElementById("callAGV");
-    let agvjson = {
-      reqCode: " ",
-      taskTyp: "DDPA",
-      positionCodePath: [
-        {
-          positionCode: "p01",
-          type: "00",
-        },
-        {
-          positionCode: "234",
-          type: "04",
-        },
-      ],
-    };
-    function pickupselect() {
-      if (document.getElementById("W21").checked == true) {
-        agvjson.positionCodePath[0].positionCode = "W21";
-      } else if (document.getElementById("W22").checked == true) {
-        agvjson.positionCodePath[0].positionCode = "W22";
-      } else {
-        agvjson.positionCodePath[0].positionCode = "none";
-        alert("Please Select W21 or W22!");
+      let agvjson = {
+        reqCode: " ",
+        taskTyp: "DDPA",
+        positionCodePath: [
+          {
+            positionCode: "p01",
+            type: "00",
+          },
+          {
+            positionCode: "234",
+            type: "04",
+          },
+        ],
+      };
+      function pickupselect() {
+        if (document.getElementById("W21").checked == true) {
+          agvjson.positionCodePath[0].positionCode = "W21";
+        } else if (document.getElementById("W22").checked == true) {
+          agvjson.positionCodePath[0].positionCode = "W22";
+        } else {
+          agvjson.positionCodePath[0].positionCode = "none";
+          alert("Please Select W21 or W22!");
+        }
       }
-    }
-    function dropselect() {
-      if (document.getElementById("age1").checked == true) {
-        agvjson.positionCodePath[1].positionCode = "44";
-      } else if (document.getElementById("age2").checked == true) {
-        agvjson.positionCodePath[1].positionCode = "234";
-      } else if (document.getElementById("age3").checked == true) {
-        agvjson.positionCodePath[1].positionCode = "55";
-      } else if (document.getElementById("age4").checked == true) {
-        agvjson.positionCodePath[1].positionCode = "66";
-      } else if (document.getElementById("age5").checked == true) {
-        agvjson.positionCodePath[1].positionCode = "77";
-      } else {
-        agvjson.positionCodePath[1].positionCode = "none";
-        alert("Please select the destination!");
+      function dropselect() {
+        if (document.getElementById("age1").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "44";
+        } else if (document.getElementById("age2").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "234";
+        } else if (document.getElementById("age3").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "55";
+        } else if (document.getElementById("age4").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "66";
+        } else if (document.getElementById("age5").checked == true) {
+          agvjson.positionCodePath[1].positionCode = "77";
+        } else {
+          agvjson.positionCodePath[1].positionCode = "none";
+          alert("Please select the destination!");
+        }
       }
-    }
-    async function sendRCS() {
-      const endpoint = new URL(
-        "http://192.168.20.2:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
-      );
-      const response = await fetch(endpoint, {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(agvjson),
-
+      async function sendRCS() {
+        const endpoint = new URL(
+          "http://192.168.20.2:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
+        );
+        const response = await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(agvjson),
+        });
+        console.log(JSON.stringify(response.body));
+        console.log(response.statusText);
+        console.log(response.status);
+        if (response.reqCode === 0) {
+          alert("Call AGV successfully!");
+        } else {
+          alert("Call AGV successfully!");
+        }
+      }
+      agvcall.addEventListener("click", function () {
+        pickupselect();
+        dropselect();
+        sendRCS();
+        console.log(JSON.stringify(agvjson));
+        closeForm();
       });
-      console.log(JSON.stringify(response.body));
-      console.log(response.statusText);
-      console.log(response.status);
-      if (response.reqCode === 0)
-      {
-        alert("Call AGV successfully!");
-      }
-      else
-      {
-        alert("Call AGV successfully!");
-      }
-      
-    }
-    agvcall.addEventListener("click", function () {
-      pickupselect();
-      dropselect();
-      sendRCS();
-      console.log(JSON.stringify(agvjson));
-      closeForm();
-    });
     </script>
   </body>
 </html>
