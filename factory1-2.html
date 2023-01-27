@@ -28,30 +28,24 @@
     <div class="main-access">
       <div class="container">
         <!-- <img class="distinct" src="/image/factory1-2.jpg" alt="" /> -->
-        <ul>
-          <li>
-            <input
-              class="W21"
-              onclick="openForm()"
-              type="radio"
-              name="W21"
-              id="W21"
-              value="2"
-            />
-            <label class="W21-label" for="W21">W21</label>
-          </li>
-          <li>
-            <input
-              class="W22"
-              onclick="openForm()"
-              type="radio"
-              name="W21"
-              id="W22"
-              value="3"
-            />
-            <label class="W22-label" for="W22">W22</label>
-          </li>
-        </ul>
+        <input
+          class="W21"
+          onclick="openForm()"
+          type="radio"
+          name="W21"
+          id="W21"
+          value="2"
+        />
+        <label class="W21-label" for="W21">Vị Trí A</label>
+        <input
+          class="W22"
+          onclick="openForm()"
+          type="radio"
+          name="W21"
+          id="W22"
+          value="3"
+        />
+        <label class="W22-label" for="W22">Vị Trí B</label>
       </div>
     </div>
     <div class="form-popup" id="myForm">
@@ -84,6 +78,9 @@
       </div>
     </div>
     <script>
+      function focusTest(){
+        document.getElementById("myAnchor").focus();
+      }
       function openForm() {
         // document.getElementById("main-access").style.zIndex = "-999";
         //  document.getElementById("myForm").style.zIndex = "1";

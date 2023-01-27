@@ -1,3 +1,7 @@
+.main-access {
+  z-index: 0;
+  display: inline;
+}
 .main-access .container {
   position: relative;
 }
@@ -10,11 +14,6 @@
   display: none;
 }
 .main-access .container .W21 {
-  position: absolute;
-  top: 35%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
@@ -24,11 +23,6 @@
   border-radius: 5px;
 }
 .main-access .container .W22 {
-  position: absolute;
-  top: 20%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
@@ -38,12 +32,7 @@
   border-radius: 5px;
 }
 .main-access .container .W21-label {
-  position: absolute;
-  top: 25%;
-  left: 90%;
   background: white;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   color: #cc3b01;
   font-family: "Poppins", sans-serif;
   font-size: 30px;
@@ -55,14 +44,11 @@
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
+  margin: 2.5em 2.5em;
+  font-size: 5em;
 }
 .main-access .container .W22-label {
-  position: absolute;
   background: white;
-  top: 10%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   color: #cc3b01;
   font-family: "Poppins", sans-serif;
   font-size: 30px;
@@ -74,6 +60,8 @@
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
+  margin: 2.5em 2.5em;
+  font-size: 5em;
 }
 .main-access .container label:before {
   background: white;
@@ -102,12 +90,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 100%;
   border-radius: 2rem;
   z-index: 0;
   transition: 1s;
   opacity: 0;
   background-color: white;
+  margin: 2em auto;
 }
 .form-popup h1 {
   font-size: 2em;
@@ -185,6 +174,7 @@
     position: relative;
   }
   .main-access .container img {
+    display: none;
     align-items: center;
     width: 100%;
     height: 50%;
@@ -192,63 +182,13 @@
   .main-access .container input[type=radio] {
     display: none;
   }
-  .main-access .container .W21 {
-    position: absolute;
-    top: 25%;
-    left: 80;
-    background-color: #555;
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .main-access .container .W22 {
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    background-color: #555;
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
   .main-access .container .W21-label {
-    position: absolute;
-    top: 25%;
-    left: 80%;
     background: white;
-    color: #cc3b01;
-    font-family: "Poppins", sans-serif;
-    font-size: 1em;
-    border: 2px solid;
-    border-radius: 1em;
-    padding: 0.4em 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    cursor: pointer;
+    font-size: 2.5em;
   }
   .main-access .container .W22-label {
-    position: absolute;
     background: white;
-    top: 10%;
-    left: 20%;
-    color: #cc3b01;
-    font-family: "Poppins", sans-serif;
-    font-size: 1em;
-    border: 2px solid;
-    border-radius: 1em;
-    padding: 0.4em 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    cursor: pointer;
+    font-size: 2.5em;
   }
   .main-access .container label:before {
     background: white;

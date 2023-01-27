@@ -28,12 +28,12 @@
     <div class="inputdata">
       <div class="Pickup">
         <!-- <label class="rackid" for="fname">RACK:</label> -->
-        <input type="text" id="fname" name="fname" placeholder="Scan mã Rack"/>
+        <input type="text" id="fname" name="fname" placeholder="Scan mã Rack" />
       </div>
       <div class="Drop">
-        <input type="radio" id="age1" name="age" value="1" />
+        <input type="radio" id="age1" name="age" value="1" onclick="focusTest()" />
         <label for="age1">Kho Thông Minh</label>
-        <input type="radio" id="age2" name="age" value="2" />
+        <input type="radio" id="age2" name="age" value="2" onclick="focusTest()"/>
         <label for="age2">Nhà Máy 1</label>
         <!-- <input type="radio" id="age3" name="age" value="3" />
         <label for="age3">Khu Nguyên Liệu</label> -->
@@ -68,6 +68,9 @@
           },
         ],
       };
+      function focusTest(){
+        document.getElementById("fname").focus();
+      }
       function pickupselect() {
         if (document.getElementById("fname").value !== "") {
           agvjson.positionCodePath[0].positionCode =
