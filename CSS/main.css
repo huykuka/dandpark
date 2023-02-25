@@ -20,8 +20,8 @@ body {
   align-items: center;
 }
 .navbar .container img {
-  width: 10em;
-  height: 5em;
+  width: 8em;
+  height: 4em;
   margin-top: 0.4em;
   margin-left: 1.5em;
 }
@@ -73,7 +73,7 @@ body {
 }
 .footer .foot-img {
   width: 10em;
-  height: 5em;
+  height: 3em;
   position: fixed;
   bottom: 0;
   right: 0;

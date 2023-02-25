@@ -90,13 +90,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 80%;
+  border: 10px solid gray;
   border-radius: 2rem;
   z-index: 0;
   transition: 1s;
   opacity: 0;
   background-color: white;
-  margin: 2em auto;
+  margin: auto;
 }
 .form-popup h1 {
   font-size: 2em;
@@ -110,7 +111,7 @@
   position: relative;
   color: #cc3b01;
   font-family: "Poppins", sans-serif;
-  font-size: 1.7em;
+  font-size: 1.9em;
   border: 2px solid;
   border-radius: 1em;
   display: flex;
@@ -120,15 +121,6 @@
   white-space: nowrap;
   cursor: pointer;
   padding: 0.75em 0.75em;
-}
-.form-popup label:before {
-  /* position: absolute;
-  content:"";
-  height:30px;
-  width: 30px;
-  border: 3px solid #01cc65;
-  border-radius: 50%;
-  margin-right: 20px; */
 }
 .form-popup input[type=radio]:checked + label {
   background-color: #cc3b01;
@@ -244,15 +236,6 @@
     justify-content: center;
     white-space: nowrap;
     cursor: pointer;
-  }
-  .form-popup label:before {
-    /* position: absolute;
-    content:"";
-    height:30px;
-    width: 30px;
-    border: 3px solid #01cc65;
-    border-radius: 50%;
-    margin-right: 20px; */
   }
   .form-popup input[type=radio]:checked + label {
     background-color: #cc3b01;

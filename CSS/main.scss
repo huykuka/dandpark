@@ -16,8 +16,8 @@ body {
     width: 100%;
     align-items: center;
     img {
-      width: 10em;
-      height: 5em;
+      width: 8em;
+      height: 4em;
       margin-top: 0.4em;
       margin-left: 1.5em;
     }
@@ -69,7 +69,7 @@ body {
   background: rgb(243, 241, 241);
   .foot-img {
     width: 10em;
-    height: 5em;
+    height: 3em;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -96,8 +96,8 @@ body {
         transition: all 0.3s ease;
         display: none;
       }
-      p{
-        font-size: 4.5vw;;
+      p {
+        font-size: 4.5vw;
       }
     }
   }

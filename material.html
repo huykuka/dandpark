@@ -17,10 +17,10 @@
         <p>Khu Nguyên Liệu</p>
         <nav>
           <ul class="navbar-menu">
-            <li><a href="/index.html">Trang Chủ</a></li>
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
             <li><a href="/material.html">Kho Nguyên Liệu</a></li>
             <li><a href="/goods.html">Khu Thành Phẩm</a></li>
+            <li><a href="/chien.html">Khu Chiên</a></li>
           </ul>
         </nav>
       </div>
@@ -31,12 +31,14 @@
         <input type="text" id="fname" name="fname" placeholder="Scan mã RACK!"/>
       </div>
       <div class="Drop">
-        <input type="radio" id="age1" name="age" value="1" />
+        <input type="radio" id="age1" name="age" value="1" onclick="focusTest()"/>
         <label for="age1">Khu Sấy</label>
-        <input type="radio" id="age2" name="age" value="2" />
+        <input type="radio" id="age2" name="age" value="2" onclick="focusTest()"/>
         <label for="age2">Sản Xuất Kẹo</label>
-        <input type="radio" id="age3" name="age" value="3" />
+        <input type="radio" id="age3" name="age" value="3" onclick="focusTest()"/>
         <label for="age3">Khu Chiên</label>
+        <input type="radio" id="age4" name="age" value="4" onclick="focusTest()"/>
+        <label for="age4">Nhà Máy 1</label>
         <!-- <input type="radio" id="age5" name="age" value="5" />
       <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
@@ -82,6 +84,9 @@
         podCode: "100001",
         
       };
+      function focusTest(){
+        document.getElementById("fname").focus();
+      }
       function pickupselect() {
         if (!document.getElementById("fname").value)
         {
@@ -98,9 +103,10 @@
         } else if (document.getElementById("age2").checked == true) {
           agvjson.positionCodePath[1].positionCode = "SxKeo";
         } else if (document.getElementById("age3").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "55";
+          agvjson.positionCodePath[1].positionCode = "KhuChien";
         } else if (document.getElementById("age4").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "66";
+          agvjson.positionCodePath[1].positionCode = "2";
+          agvjson.positionCodePath[1].type = "02";
         } else if (document.getElementById("age5").checked == true) {
           agvjson.positionCodePath[1].positionCode = "77";
         } else {

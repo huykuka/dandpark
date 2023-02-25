@@ -13,8 +13,8 @@
     }
     .W21 {
       //position: absolute;
-     // transform: translate(-50%, -50%);
-     // -ms-transform: translate(-50%, -50%);
+      // transform: translate(-50%, -50%);
+      // -ms-transform: translate(-50%, -50%);
       background-color: #555;
       color: white;
       font-size: 16px;
@@ -22,12 +22,11 @@
       border: none;
       cursor: pointer;
       border-radius: 5px;
-      
     }
     .W22 {
-     // position: absolute;
+      // position: absolute;
       //transform: translate(-50%, -50%);
-     // -ms-transform: translate(-50%, -50%);
+      // -ms-transform: translate(-50%, -50%);
       background-color: #555;
       color: white;
       font-size: 16px;
@@ -87,7 +86,7 @@
         border: 3px solid #01cc65;
         border-radius: 50%;
         margin-right: 20px; */
-        //margin:  2em 2em;
+      //margin:  2em 2em;
     }
     input[type="radio"]:checked + label {
       background-color: #cc3b01;
@@ -108,13 +107,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 80%;
+  border: 10px solid gray;
   border-radius: 2rem;
   z-index: 0;
   transition: 1s;
   opacity: 0;
   background-color: white;
-  margin: 2em auto;
+  margin: auto;
   h1 {
     font-size: 2em;
     margin-left: 2em;
@@ -127,7 +127,7 @@
     position: relative;
     color: #cc3b01;
     font-family: "Poppins", sans-serif;
-    font-size: 1.7em;
+    font-size: 1.9em;
     border: 2px solid;
     border-radius: 1em;
     display: flex;
@@ -137,15 +137,6 @@
     white-space: nowrap;
     cursor: pointer;
     padding: 0.75em 0.75em;
-  }
-  label:before {
-    /* position: absolute;
-    content:"";
-    height:30px;
-    width: 30px;
-    border: 3px solid #01cc65;
-    border-radius: 50%;
-    margin-right: 20px; */
   }
   input[type="radio"]:checked + label {
     background-color: #cc3b01;
@@ -196,29 +187,6 @@
       }
       input[type="radio"] {
         display: none;
-      }
-      .W21 {
-
-        // transform: translate(-50%, -50%);
-        //-ms-transform: translate(-50%, -50%);
-        // background-color: #555;
-        // color: white;
-        // font-size: 16px;
-        // padding: 12px 24px;
-        // border: none;
-        // cursor: pointer;
-        // border-radius: 5px;
-      }
-      .W22 {
-        //transform: translate(-50%, -50%);
-        //-ms-transform: translate(-50%, -50%);
-        // background-color: #555;
-        // color: white;
-        // font-size: 16px;
-        // padding: 12px 24px;
-        // border: none;
-        // cursor: pointer;
-        // border-radius: 5px;
       }
       .W21-label {
         background: white;
@@ -311,15 +279,7 @@
       white-space: nowrap;
       cursor: pointer;
     }
-    label:before {
-      /* position: absolute;
-      content:"";
-      height:30px;
-      width: 30px;
-      border: 3px solid #01cc65;
-      border-radius: 50%;
-      margin-right: 20px; */
-    }
+
     input[type="radio"]:checked + label {
       background-color: #cc3b01;
       color: #fcfcfc;

@@ -17,10 +17,10 @@
         <p>Nhà Máy 1-2</p>
         <nav>
           <ul class="navbar-menu">
-            <li><a href="/index.html">Trang Chủ</a></li>
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
             <li><a href="/material.html">Kho Nguyên Liệu</a></li>
             <li><a href="/goods.html">Khu Thành Phẩm</a></li>
+            <li><a href="/chien.html">Khu Chiên</a></li>
           </ul>
         </nav>
       </div>
@@ -30,7 +30,7 @@
         <!-- <img class="distinct" src="/image/factory1-2.jpg" alt="" /> -->
         <input
           class="W21"
-          onclick="openForm()"
+          onclick="openForm(W21)"
           type="radio"
           name="W21"
           id="W21"
@@ -39,7 +39,7 @@
         <label class="W21-label" for="W21">Vị Trí A</label>
         <input
           class="W22"
-          onclick="openForm()"
+          onclick="openForm(W22)"
           type="radio"
           name="W21"
           id="W22"
@@ -50,7 +50,7 @@
     </div>
     <div class="form-popup" id="myForm">
       <form action="/action_page.php" class="form-container">
-        <h1>Chọn điểm đến</h1>
+        <h1 id="destination" >Chọn điểm đến</h1>
         <img
           onclick="closeForm()"
           class="menu-exit"
@@ -78,16 +78,17 @@
       </div>
     </div>
     <script>
-      function focusTest(){
-        document.getElementById("myAnchor").focus();
+      function changeHeader(name){
+        document.getElementById('destination').innerText = 'Từ Vị Trí ' + name + ' đến';
       }
-      function openForm() {
+      function openForm(name) {
         // document.getElementById("main-access").style.zIndex = "-999";
         //  document.getElementById("myForm").style.zIndex = "1";
         // document.getElementById("myForm").style.visibility = "visible";
         document.getElementById("myForm").style.display = "block";
         document.getElementById("myForm").style.opacity = "1";
         document.getElementById("main-access").style.zIndex = "-1";
+        changeHeader(name);
       }
 
       function closeForm() {
@@ -126,11 +127,11 @@
         if (document.getElementById("age1").checked == true) {
           agvjson.positionCodePath[1].positionCode = "44";
         } else if (document.getElementById("age2").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "234";
+          agvjson.positionCodePath[1].positionCode = "KhuChien";
         } else if (document.getElementById("age3").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "55";
+          agvjson.positionCodePath[1].positionCode = "10";
         } else if (document.getElementById("age4").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "66";
+          agvjson.positionCodePath[1].positionCode = "SxKeo";
         } else if (document.getElementById("age5").checked == true) {
           agvjson.positionCodePath[1].positionCode = "77";
         } else {
