@@ -19,8 +19,8 @@
           <ul class="navbar-menu">
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
             <li><a href="/material.html">Kho Nguyên Liệu</a></li>
-            <li><a href="/goods.html">Khu Thành Phẩm</a></li>
-            <li><a href="/chien.html">Khu Chiên</a></li>
+            <li><a href="/goods.html">Thành Phẩm</a></li>
+            <li><a href="/sanxuat.html">Khu Sản Xuất</a></li>
           </ul>
         </nav>
       </div>
@@ -65,6 +65,8 @@
         <label for="age3">Khu Sấy</label>
         <input type="radio" id="age4" name="age" value="4" />
         <label for="age4">Làm Kẹo</label>
+        <input type="radio" id="age5" name="age" value="4" />
+        <label for="age5">Trả Rack</label>
         <div class="confirm">
           <button type="button" id="callAGV" class="btn cancel">
             Xác Nhận
@@ -133,7 +135,8 @@
         } else if (document.getElementById("age4").checked == true) {
           agvjson.positionCodePath[1].positionCode = "SxKeo";
         } else if (document.getElementById("age5").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "77";
+          agvjson.positionCodePath[1].positionCode = "3";
+          agvjson.positionCodePath[1].type = "02";
         } else {
           agvjson.positionCodePath[1].positionCode = "none";
           alert("Please select the destination!");

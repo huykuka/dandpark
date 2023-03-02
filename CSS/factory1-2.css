@@ -91,8 +91,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  border: 10px solid gray;
-  border-radius: 2rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
   z-index: 0;
   transition: 1s;
   opacity: 0;

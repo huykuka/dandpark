@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khu Chiên</title>
+    <title>Khu Kẹo</title>
     <link rel="stylesheet" href="/CSS/main.css" />
-    <link rel="stylesheet" href="/CSS/chien.css" />
+    <link rel="stylesheet" href="/CSS/keo.css" />
   </head>
   <body>
     <div class="navbar">
@@ -14,72 +14,83 @@
         <a href="/index.html">
           <img src="/dpaklogo.png" alt="" />
         </a>
-        <p>Khu Chiên</p>
+        <p>Khu Kẹo</p>
         <nav>
           <ul class="navbar-menu">
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
             <li><a href="/material.html">Kho Nguyên Liệu</a></li>
             <li><a href="/goods.html">Thành Phẩm</a></li>
-            <li><a href="/goods.html">Khu Sản Xuất</a></li>
+            <li><a href="/sanxuat.html">Khu Sản Xuất</a></li>
           </ul>
         </nav>
       </div>
     </div>
-    <div class="main-access">
-      <div class="container">
-        <!-- <img class="distinct" src="/image/factory1-2.jpg" alt="" /> -->
-          <button class="Button12" onclick="sendRCS()" id="callAGV" type="Confirm">Đã Lấy kệ</button>
+    <div class="inputdata">
+     
+      <div class="Drop">
+        <input type="radio" id="age1" name="age" value="1" onclick="dropselect()"/>
+        <label for="age1">Vị Trí 1</label>
+        <input type="radio" id="age2" name="age" value="2" onclick="dropselect()"/>
+        <label for="age2">Vị Trí 2</label>
+        <!-- <input type="radio" id="age5" name="age" value="5" />
+      <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
       <a href="/sanxuat.html" class="back-btn"><i></i> Back</a>
     </div>
+    <!-- <div class="Void">Void</div> -->
     <div class="footer">
       <div class="container">
         <img class="foot-img" src="/image/Logo-01.svg" alt="" />
       </div>
     </div>
     <script>
-      function changeHeader(name){
-        document.getElementById('destination').innerText = 'Từ Vị Trí ' + name + ' đến';
-      }
-      function openForm(name) {
-        // document.getElementById("main-access").style.zIndex = "-999";
-        //  document.getElementById("myForm").style.zIndex = "1";
-        // document.getElementById("myForm").style.visibility = "visible";
-        document.getElementById("myForm").style.display = "block";
-        document.getElementById("myForm").style.opacity = "1";
-        document.getElementById("main-access").style.zIndex = "-1";
-        changeHeader(name);
-      }
       const agvcall = document.getElementById("callAGV");
       let agvjson = {
-        reqCode: " ",
+        reqCode: "",
         taskTyp: "DDPA",
         positionCodePath: [
           {
-            positionCode: "CH1",
-            type: "00",
+            //Departure
+            positionCode: "124",
+            type: "03",
           },
           {
+            //Destination
             positionCode: "1",
             type: "02",
           },
         ],
       };
+      function pickupselect() {
+        if (document.getElementById("fname").value !== "") {
+          agvjson.positionCodePath[0].positionCode =
+            document.getElementById("fname").value;
+        } else {
+          alert("Please Scan Rack!");
+          return;
+        }
+      }
       function dropselect() {
         if (document.getElementById("age1").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "44";
+          agvjson.positionCodePath[0].positionCode = "K1";
+          agvjson.positionCodePath[0].type = "00";
         } else if (document.getElementById("age2").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "234";
+          agvjson.positionCodePath[0].positionCode = "K2";
+          agvjson.positionCodePath[0].type = "00";
+
         } else if (document.getElementById("age3").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "55";
+          agvjson.positionCodePath[1].positionCode = "222";
+          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age4").checked == true) {
           agvjson.positionCodePath[1].positionCode = "66";
         } else if (document.getElementById("age5").checked == true) {
           agvjson.positionCodePath[1].positionCode = "77";
         } else {
-          agvjson.positionCodePath[1].positionCode = "none";
-          alert("Please select the destination!");
+          alert("Please Select the Destination!");
+          return;
         }
+        console.log(JSON.stringify(agvjson));
+        sendRCS();
       }
       async function sendRCS() {
         const endpoint = new URL(
@@ -88,17 +99,27 @@
         const response = await fetch(endpoint, {
           method: "POST",
           mode: "no-cors",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "*",
+            "Access-Control-Allow-Origin": "*",
+          },
           body: JSON.stringify(agvjson),
         });
-        console.log(JSON.stringify(response.body));
-        console.log(response.statusText);
-        console.log(response.status);
-        if (response.reqCode === 0) {
-          alert("Call AGV successfully!");
+        if (response.status === 404) {
+          alert("Error");
+          return;
         } else {
-          alert("Call AGV successfully!");
+          alert("Call Successfully");
         }
+        console.log(response);
       }
+      agvcall.addEventListener("click", function () {
+        console.log(document.getElementById("fname").value);
+        pickupselect();
+        dropselect();
+        console.log(JSON.stringify(agvjson));
+      });
     </script>
   </body>
 </html>

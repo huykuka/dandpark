@@ -19,8 +19,8 @@
           <ul class="navbar-menu">
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
             <li><a href="/material.html">Kho Nguyên Liệu</a></li>
-            <li><a href="/goods.html">Khu Thành Phẩm</a></li>
-            <li><a href="/chien.html">Khu Chiên</a></li>
+            <li><a href="/goods.html">Thành Phẩm</a></li>
+            <li><a href="/sanxuat.html">Khu Sản Xuất</a></li>
           </ul>
         </nav>
       </div>
@@ -35,8 +35,8 @@
         <label for="age1">Kho Thông Minh</label>
         <input type="radio" id="age2" name="age" value="2" onclick="focusTest()"/>
         <label for="age2">Nhà Máy 1</label>
-        <!-- <input type="radio" id="age3" name="age" value="3" />
-        <label for="age3">Khu Nguyên Liệu</label> -->
+        <input type="radio" id="age3" name="age" value="3" onclick="focusTest()" />
+        <label for="age3">Kho Thành Phẩm</label>
         <!-- <input type="radio" id="age5" name="age" value="5" />
       <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
@@ -89,7 +89,8 @@
           agvjson.positionCodePath[1].type = "02";
 
         } else if (document.getElementById("age3").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "124";
+          agvjson.positionCodePath[1].positionCode = "222";
+          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age4").checked == true) {
           agvjson.positionCodePath[1].positionCode = "66";
         } else if (document.getElementById("age5").checked == true) {
