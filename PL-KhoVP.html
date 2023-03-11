@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nhà máy 1-2</title>
+    <title>Khu Chiên</title>
     <link rel="stylesheet" href="/CSS/main.css" />
-    <link rel="stylesheet" href="/CSS/factory1-2.css" />
+    <link rel="stylesheet" href="/CSS/sanxuat.css" />
   </head>
   <body>
     <div class="navbar">
@@ -14,7 +14,7 @@
         <a href="/index.html">
           <img src="/dpaklogo.png" alt="" />
         </a>
-        <p>Nhà Máy 1-2</p>
+        <p>PL-VPKho</p>
         <nav>
           <ul class="navbar-menu">
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
@@ -29,49 +29,13 @@
     <div class="main-access">
       <div class="container">
         <!-- <img class="distinct" src="/image/factory1-2.jpg" alt="" /> -->
-        <input
-          class="W21"
-          onclick="openForm(W21)"
-          type="radio"
-          name="W21"
-          id="W21"
-          value="2"
-        />
-        <label class="W21-label" for="W21">Vị Trí A</label>
-        <input
-          class="W22"
-          onclick="openForm(W22)"
-          type="radio"
-          name="W21"
-          id="W22"
-          value="3"
-        />
-        <label class="W22-label" for="W22">Vị Trí B</label>
+        <!-- <button class="Button12"><a href="/chien.html"></a>Khu Chiên</button>
+        <button class="Button13"><a href="/chien.html"></a>Khu Kẹo</button> -->
+        <ul>
+          <li><a href="/PL.html">Khu Phân Loại</a></li>
+          <li><a href="/KhoVP.html">Kho Văn Phòng</a></li>
+        </ul>
       </div>
-    </div>
-    <div class="form-popup" id="myForm">
-      <form action="/action_page.php" class="form-container">
-        <h1 id="destination" >Chọn điểm đến</h1>
-        <img
-          onclick="closeForm()"
-          class="menu-exit"
-          src="/image/exit.png"
-          alt=""
-        />
-        <input type="radio" id="age1" name="age" value="1" />
-        <label for="age1">Kho Thông Minh</label>
-        <input type="radio" id="age2" name="age" value="2" />
-        <label for="age2">Khu Chiên</label>
-        <input type="radio" id="age3" name="age" value="3" />
-        <label for="age3">Khu Sấy</label>
-        <input type="radio" id="age4" name="age" value="4" />
-        <label for="age4">Làm Kẹo</label>
-        <div class="confirm">
-          <button type="button" id="callAGV" class="btn cancel">
-            Xác Nhận
-          </button>
-        </div>
-      </form>
     </div>
     <div class="footer">
       <div class="container">
@@ -91,52 +55,30 @@
         document.getElementById("main-access").style.zIndex = "-1";
         changeHeader(name);
       }
-
-      function closeForm() {
-        //document.getElementById("myForm").style.visibility = "hidden";
-        //document.getElementById("myForm").style.zIndex = "-999";
-        document.getElementById("myForm").style.opacity = "0";
-        document.getElementById("myForm").style.display = "none";
-        document.getElementById("main-access").style.zIndex = "1";
-      }
       const agvcall = document.getElementById("callAGV");
       let agvjson = {
         reqCode: " ",
         taskTyp: "DDPA",
         positionCodePath: [
           {
-            positionCode: "p01",
+            positionCode: "CH1",
             type: "00",
           },
           {
-            positionCode: "234",
-            type: "04",
+            positionCode: "1",
+            type: "02",
           },
         ],
       };
-      function pickupselect() {
-        if (document.getElementById("W21").checked == true) {
-          agvjson.positionCodePath[0].positionCode = "W21";
-        } else if (document.getElementById("W22").checked == true) {
-          agvjson.positionCodePath[0].positionCode = "W22";
-        } else {
-          agvjson.positionCodePath[0].positionCode = "none";
-          alert("Please Select W21 or W22!");
-        }
-      }
       function dropselect() {
         if (document.getElementById("age1").checked == true) {
           agvjson.positionCodePath[1].positionCode = "44";
-          agvjson.positionCodePath[1].type = "04";
         } else if (document.getElementById("age2").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "KhuChien";
-          agvjson.positionCodePath[1].type = "04";
+          agvjson.positionCodePath[1].positionCode = "234";
         } else if (document.getElementById("age3").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "10";
-          agvjson.positionCodePath[1].type = "04";
+          agvjson.positionCodePath[1].positionCode = "55";
         } else if (document.getElementById("age4").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "SxKeo";
-          agvjson.positionCodePath[1].type = "04";
+          agvjson.positionCodePath[1].positionCode = "66";
         } else if (document.getElementById("age5").checked == true) {
           agvjson.positionCodePath[1].positionCode = "77";
         } else {
@@ -146,7 +88,7 @@
       }
       async function sendRCS() {
         const endpoint = new URL(
-          "http://192.168.20.2:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
+          "http://45.118.137.65:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
         );
         const response = await fetch(endpoint, {
           method: "POST",
@@ -162,13 +104,6 @@
           alert("Call AGV successfully!");
         }
       }
-      agvcall.addEventListener("click", function () {
-        pickupselect();
-        dropselect();
-        sendRCS();
-        console.log(JSON.stringify(agvjson));
-        closeForm();
-      });
     </script>
   </body>
 </html>

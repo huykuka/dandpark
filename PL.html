@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khu Nguyên Liệu</title>
+    <title>Khu Kẹo</title>
     <link rel="stylesheet" href="/CSS/main.css" />
-    <link rel="stylesheet" href="/CSS/material.css" />
+    <link rel="stylesheet" href="/CSS/keo.css" />
   </head>
   <body>
     <div class="navbar">
@@ -14,52 +14,31 @@
         <a href="/index.html">
           <img src="/dpaklogo.png" alt="" />
         </a>
-        <p>Khu Nguyên Liệu</p>
+        <p>Khu Phân Loại</p>
         <nav>
           <ul class="navbar-menu">
             <li><a href="/factory1-2.html">Nhà Máy 1-2</a></li>
             <li><a href="/material.html">Kho Nguyên Liệu</a></li>
             <li><a href="/goods.html">Thành Phẩm</a></li>
             <li><a href="/sanxuat.html">Khu Sản Xuất</a></li>
-            <li><a href="/PL-KhoVP.html">PL-KVP</a></li>
+            <li><a href="/sanxuat.html">Khu Sản Xuất</a></li>
           </ul>
         </nav>
       </div>
     </div>
     <div class="inputdata">
-      <div class="Pickup">
-        <!-- <label class="rackid" for="fname">RACK:</label> -->
-        <input type="text" id="fname" name="fname" placeholder="Scan mã RACK!"/>
-      </div>
+     
       <div class="Drop">
-        <input type="radio" id="age1" name="age" value="1" onclick="focusTest()"/>
-        <label for="age1">Khu Sấy</label>
-        <input type="radio" id="age2" name="age" value="2" onclick="focusTest()"/>
-        <label for="age2">Sản Xuất Kẹo</label>
-        <input type="radio" id="age3" name="age" value="3" onclick="focusTest()"/>
-        <label for="age3">Khu Chiên</label>
-        <input type="radio" id="age4" name="age" value="4" onclick="focusTest()"/>
-        <label for="age4">Nhà Máy 1</label>
+        <input type="radio" id="age1" name="age" value="1" onclick="dropselect()"/>
+        <label for="age1">Vị Trí 1</label>
+        <input type="radio" id="age2" name="age" value="2" onclick="dropselect()"/>
+        <label for="age2">Vị Trí 2</label>
         <!-- <input type="radio" id="age5" name="age" value="5" />
       <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
+      <a href="/PL-KhoVP.html" class="back-btn"><i></i> Back</a>
     </div>
-    <div class="Confirm">
-      <button class="Button12" id="callAGV" type="Confirm">Xác Nhận</button>
-    </div>
-    <!-- <div class="main-image">
-        <div class="container">
-          <img src="/image/solution-by-application.png" alt="">
-        </div>
-      </div> -->
-    <!-- <div class="Mobile-menu">
-        <div class="container">
-          <ul class="navbar-menu">
-            <li><a href="">Nhà máy 1-2<img src="/image/factory.png" alt=""> </a></li>
-            <li><a href="">Kho Nguyên Liệu<img src="/image/maeterial.jpg" alt=""></a></li>
-            <li><a href="">Khu Thành Phẩm<img src="/image/finishedgood.png" alt=""></a></li>
-        </div>
-      </div> -->
+    <!-- <div class="Void">Void</div> -->
     <div class="footer">
       <div class="container">
         <img class="foot-img" src="/image/Logo-01.svg" alt="" />
@@ -69,7 +48,7 @@
       const agvcall = document.getElementById("callAGV");
       let agvjson = {
         reqCode: "",
-        taskTyp: "DDPA2",
+        taskTyp: "DDPA",
         positionCodePath: [
           {
             //Departure
@@ -77,65 +56,65 @@
             type: "03",
           },
           {
-            //Destination 
-            positionCode: "10",
-            type: "04",
+            //Destination
+            positionCode: "1",
+            type: "02",
           },
         ],
-        //podCode: " ",
       };
-      function focusTest(){
-        document.getElementById("fname").focus();
-      }
       function pickupselect() {
-        if (!document.getElementById("fname").value)
-        {
+        if (document.getElementById("fname").value !== "") {
+          agvjson.positionCodePath[0].positionCode =
+            document.getElementById("fname").value;
+        } else {
           alert("Please Scan Rack!");
           return;
-          
-        }else{
-          agvjson.positionCodePath[0].positionCode= document.getElementById("fname").value;
-          agvjson.podCode = document.getElementById("fname").value;
         }
       }
       function dropselect() {
-        agvjson.taskTyp="DDPA2";
         if (document.getElementById("age1").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "10";
+          agvjson.positionCodePath[0].positionCode = "KPL1";
+          agvjson.positionCodePath[0].type = "00";
         } else if (document.getElementById("age2").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "SxKeo";
+          agvjson.positionCodePath[0].positionCode = "KPL2";
+          agvjson.positionCodePath[0].type = "00";
+
         } else if (document.getElementById("age3").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "KhuChien";
+          agvjson.positionCodePath[0].positionCode = "K1";
+          agvjson.positionCodePath[0].type = "00";
         } else if (document.getElementById("age4").checked == true) {
-          agvjson.positionCodePath[1].positionCode = "W22";
-          agvjson.positionCodePath[1].type = "00";
+          agvjson.positionCodePath[0].positionCode = "K1";
+          agvjson.positionCodePath[0].type = "00";
         } else if (document.getElementById("age5").checked == true) {
           agvjson.positionCodePath[1].positionCode = "77";
         } else {
           alert("Please Select the Destination!");
           return;
         }
+        console.log(JSON.stringify(agvjson));
         sendRCS();
       }
       async function sendRCS() {
         const endpoint = new URL(
-          "http://192.168.20.2:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
+          "http://45.118.137.65:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
         );
         const response = await fetch(endpoint, {
           method: "POST",
           mode: "no-cors",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "*",
+            "Access-Control-Allow-Origin": "*",
+          },
           body: JSON.stringify(agvjson),
         });
         if (response.status === 404) {
           alert("Error");
           return;
-        }
-        else{
+        } else {
           alert("Call Successfully");
-        
         }
-        //alert(response.body.code);
-        console.log(response.body);
+        console.log(response);
       }
       agvcall.addEventListener("click", function () {
         console.log(document.getElementById("fname").value);
@@ -143,7 +122,6 @@
         dropselect();
         console.log(JSON.stringify(agvjson));
       });
-      
     </script>
   </body>
 </html>

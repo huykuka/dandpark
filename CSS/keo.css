@@ -101,6 +101,19 @@ input[type=radio]:checked + label:before {
   font-size: 4vw;
 }
 
+<<<<<<< HEAD
+.back-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+=======
+>>>>>>> 38eacfef8a1c5ddd2d8e3545f594f54251a5ef14
 
 
 @media screen and (max-width: 845px) {
