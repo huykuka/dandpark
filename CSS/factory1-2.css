@@ -90,11 +90,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-<<<<<<< HEAD
   width: 100%;
-=======
-  width: 80%;
->>>>>>> 38eacfef8a1c5ddd2d8e3545f594f54251a5ef14
   border: 10px solid gray;
   border-radius: 2rem;
   z-index: 0;

@@ -30,8 +30,8 @@
   border: none;
   background: linear-gradient(90deg, #0162c8, #55e7fc);
   white-space: nowrap;
-}
-.main-access .container .back-btn {
+}/*# sourceMappingURL=chien.css.map */
+.back-btn {
   position: fixed;
   bottom: 10px;
   left: 10px;
@@ -41,13 +41,11 @@
   border-radius: 5px;
   text-decoration: none;
 }
-.main-access .container .back-btn:hover {
+
+.back-btn:hover {
   background-color: #555;
 }
-.main-access .container .back-btn i {
+
+.back-btn i {
   margin-right: 5px;
-<<<<<<< HEAD
 }
-=======
-}/*# sourceMappingURL=chien.css.map */
->>>>>>> 38eacfef8a1c5ddd2d8e3545f594f54251a5ef14
