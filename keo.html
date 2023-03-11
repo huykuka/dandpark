@@ -35,7 +35,7 @@
         <!-- <input type="radio" id="age5" name="age" value="5" />
       <label for="age5">Máy Chiên 6</label><br />   -->
       </div>
-      <a href="/sanxuat.html" class="back-btn"><i></i> Back</a>
+      <a href="#" class="back-btn"><i></i> Back</a>
     </div>
     <!-- <div class="Void">Void</div> -->
     <div class="footer">
@@ -76,7 +76,7 @@
           agvjson.positionCodePath[0].type = "00";
         } else if (document.getElementById("age2").checked == true) {
           agvjson.positionCodePath[0].positionCode = "K2";
-          agvjson.positionCodePath[0].type = "00";
+          agvjson.positionCodePath[1].type = "00";
 
         } else if (document.getElementById("age3").checked == true) {
           agvjson.positionCodePath[1].positionCode = "222";
@@ -94,7 +94,7 @@
       }
       async function sendRCS() {
         const endpoint = new URL(
-          "http://45.118.137.65:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
+          "http://192.168.20.2:8181/rcms/services/rest/hikRpcService/genAgvSchedulingTask/"
         );
         const response = await fetch(endpoint, {
           method: "POST",
